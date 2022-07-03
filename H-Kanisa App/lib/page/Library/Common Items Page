@@ -1,0 +1,384 @@
+/*
+import 'package:flutter/material.dart';
+import 'package:navigation_drawer_example/widget/pallete.dart';
+
+Widget build(BuildContext context) => MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Common Items',
+      theme: ThemeData(primarySwatch: AppColor.colorHK),
+      home: Common_Items(),
+    );
+
+class Common_Items extends StatelessWidget {
+  static final String title = 'H-Kanisa';
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text('Common Items'),
+          foregroundColor: AppColor.whiteHK,
+          centerTitle: true,
+          iconTheme: IconThemeData(color: AppColor.whiteHK),
+          backgroundColor: AppColor.BACK_GROUND_COLOR,
+        ),
+      );
+}
+
+class Choice {
+  const Choice({required this.title, required this.icon});
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Datasheet Master', icon: Icons.home),
+  const Choice(title: 'Attendance', icon: Icons.contacts),
+  const Choice(title: 'Attendance Report', icon: Icons.map),
+  const Choice(title: 'Visitation Report', icon: Icons.phone),
+];
+
+class SelectCard extends StatelessWidget {
+  const SelectCard({Key? key, required this.choice}) : super(key: key);
+  final Choice choice;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        color: Colors.lightGreenAccent,
+        child: Center(
+          child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                    child:
+                        Icon(choice.icon, size: 50.0, color: AppColor.blueHK)),
+                Text(choice.title, style: TextStyle(color: AppColor.blueHK)),
+              ]),
+        ));
+  }
+}
+*/
+
+import 'package:flutter/material.dart';
+import 'package:responsive_dashboard/Log-in/screens/home-screen.dart';
+import 'package:responsive_dashboard/dashboard.dart';
+import 'package:responsive_dashboard/main.dart';
+import 'package:responsive_dashboard/page/Common_Items/Attendance%20Report.dart';
+import 'package:responsive_dashboard/page/Common_Items/Attendance.dart';
+import 'package:responsive_dashboard/page/Common_Items/DataSheet_master.dart';
+import 'package:responsive_dashboard/page/Common_Items/Visitation%20Report.dart';
+import 'package:responsive_dashboard/component/List Builder.dart';
+import 'package:responsive_dashboard/pallete.dart';
+import 'package:responsive_dashboard/style/style.dart';
+
+Widget build(BuildContext context) => MaterialApp(
+      title: 'Common_Items',
+      color: AppColor.whiteHK,
+      theme: ThemeData(
+          primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
+      home: Common_Items(),
+    );
+
+class Common_Items extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+
+
+
+
+
+         body: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  child: Row(
+                    margin: const EdgeInsets.symmetric(horizontal: 40),
+                    height: 50,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        color: AppColor.greenHK,
+                        borderRadius: BorderRadius.all(Radius.circular(25)),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 10),
+                            blurRadius: 24,
+                            color: Color.fromARGB(255, 199, 199, 199),
+                          )
+
+                        ]),
+  /*      appBar: AppBar(
+          iconTheme: IconThemeData(color: AppColor.whiteHK),
+          foregroundColor: AppColor.greyHK,
+          title: Text(
+            "Common Items",
+            style: TextStyle(
+              color: AppColor.greenHK,
+              fontFamily: 'Poppins',
+              fontSize: 22,
+              fontWeight: FontWeight.w900,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: AppColor.whiteHK,
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_new_rounded,
+                  color: AppColor.greenHK),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
+              }),
+        ),*/
+        
+        child: ListView(children: <Widget>[
+          Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+          BuildList(
+            icon: Icons.data_saver_off_sharp,
+            title: "Data Sheet Master",
+            desc: "Brief Description",
+            onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => DataSheet(),
+            )),
+          ),
+          BuildList(
+            icon: Icons.people_alt_rounded,
+            title: "Attendance",
+            desc: "Brief Description",
+            onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => attendance(),
+            )),
+          ),
+          BuildList(
+            icon: Icons.people_alt_rounded,
+            title: "Attendance Report",
+            desc: "Brief Description",
+            onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => attendanceReport(),
+            )),
+          ),
+          BuildList(
+            icon: Icons.person_pin_circle,
+            title: "Visitation Report",
+            desc: "Brief Description",
+            onClicked: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => visitationReport(),
+            )),
+          ),
+          /*
+          //Datasheet Master
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: PhysicalModel(
+              color: Colors.white,
+              elevation: 18,
+              shadowColor: AppColor.offWhiteHK,
+              borderRadius: BorderRadius.circular(15),
+              child: Center(
+                child: Container(
+                  height: 80,
+                  child: ListTile(
+                    leading: const Icon(Icons.data_saver_off_sharp),
+                    title: Transform.translate(
+                        offset: Offset(-20, 0),
+                        child: Text(
+                          "Data Sheet Master",
+                          style: TextStyle(
+                              color: AppColor.greyHK,
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        )),
+                    subtitle: Transform.translate(
+                        offset: Offset(-20, 0),
+                        child: Text(
+                          "Brief Desription",
+                          style: TextStyle(
+                              color: AppColor.greyHK,
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        )),
+                    trailing: const Icon(Icons.list_outlined),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DataSheet(),
+                    )),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+
+          //Attendance
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: PhysicalModel(
+              color: Colors.white,
+              elevation: 18,
+              shadowColor: AppColor.offWhiteHK,
+              borderRadius: BorderRadius.circular(15),
+              child: Center(
+                child: Container(
+                  height: 80,
+                  child: ListTile(
+                    leading: const Icon(Icons.data_saver_off_sharp),
+                    title: Transform.translate(
+                        offset: Offset(-20, 0),
+                        child: Text(
+                          "Attendance",
+                          style: TextStyle(
+                              color: AppColor.greyHK,
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        )),
+                    subtitle: Transform.translate(
+                        offset: Offset(-20, 0),
+                        child: Text(
+                          "Brief Desription",
+                          style: TextStyle(
+                              color: AppColor.greyHK,
+                              fontFamily: 'Poppins',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600),
+                        )),
+                    trailing: const Icon(Icons.list_outlined),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => DataSheet(),
+                    )),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+
+          //Attendance Report
+          PhysicalModel(
+            color: Colors.white,
+            elevation: 18,
+            shadowColor: AppColor.greyHK,
+            borderRadius: BorderRadius.circular(20),
+            child: ListTile(
+              leading: const Icon(Icons.data_saver_off_sharp),
+              title: Transform.translate(
+                  offset: Offset(-20, 0),
+                  child: Text(
+                    "Attendance Report",
+                    style: TextStyle(
+                        color: AppColor.greyHK,
+                        fontFamily: 'Poppins',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600),
+                  )),
+              trailing: const Icon(Icons.list_outlined),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => attendanceReport(),
+              )),
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+
+          //Visitation Report
+          PhysicalModel(
+            color: Colors.white,
+            elevation: 18,
+            shadowColor: AppColor.greyHK,
+            borderRadius: BorderRadius.circular(20),
+            child: ListTile(
+              leading: const Icon(Icons.data_saver_off_sharp),
+              title: Transform.translate(
+                  offset: Offset(-20, 0),
+                  child: Text(
+                    "Visitation Report",
+                    style: TextStyle(
+                        color: AppColor.greyHK,
+                        fontFamily: 'Poppins',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600),
+                  )),
+              trailing: const Icon(Icons.list_outlined),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => visitationReport(),
+              )),
+            ),
+          ),
+          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+*/
+          /*
+          ListTile(
+            leading: Icon(Icons.people_outline_rounded, color: AppColor.greyHK),
+            title: Transform.translate(
+                offset: Offset(-20, 0),
+                child: Text(
+                  "Attendance",
+                  style: TextStyle(
+                      color: AppColor.greyHK,
+                      fontFamily: 'Poppins',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                )),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => attendance(),
+            )),
+          ),
+          ListTile(
+            leading: Icon(Icons.people_alt_rounded, color: AppColor.greyHK),
+            title: Transform.translate(
+                offset: Offset(-20, 0),
+                child: Text(
+                  "Attendance Report",
+                  style: TextStyle(
+                      color: AppColor.greyHK,
+                      fontFamily: 'Poppins',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                )),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => attendanceReport(),
+            )),
+          ),
+          ListTile(
+            leading: Icon(Icons.contacts, color: AppColor.greyHK),
+            title: Transform.translate(
+                offset: Offset(-20, 0),
+                child: Text(
+                  "Visitation Report",
+                  style: TextStyle(
+                      color: AppColor.greyHK,
+                      fontFamily: 'Poppins',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                )),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => visitationReport(),
+            )),
+          ),*/
+        ]),
+      ),)
+    ]))));
+  }
+}
+
+/*
+     case 1:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Common_Items(),
+        ));
+        break;
+      case 2:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Admin(),
+        ));
+        break;
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Setup(),
+        ));
+        break;
+        */
