@@ -45,7 +45,7 @@ class regMember extends StatelessWidget {
           child: FormText(
             hint: "Enter your First Name",
             isItemSelected: true,
-            
+            list: _Gender,
             onDrop: () => onTextFieldTap(),
           ),
         )
