@@ -5,7 +5,7 @@ class AppColor {
       fontFamily: 'Montserrat',
       fontSize: 22,
       color: Color.fromARGB(255, 255, 255, 255));
-  static const MaterialColor colorHK = const MaterialColor(
+  static MaterialColor colorHK = MaterialColor(
     0xFF94C13D,
     const <int, Color>{
       50: const Color(0xFF94C13D),

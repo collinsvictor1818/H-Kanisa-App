@@ -1,5 +1,13 @@
 // Constant Messages
-
+const Male = 'Male';
+const Female = 'Female';
+const TGL = 'TGL';
+const HFC = 'HFC';
+const ARK = 'ARK';
+const CreativeArts = 'Creative Arts';
+const Media = 'Media';
+const Anaedea = 'Anaedea';
+const Biazo= 'Biazo';
 // App Title
 const kTitle = 'DropDownList';
 

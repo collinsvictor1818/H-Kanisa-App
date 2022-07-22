@@ -70,7 +70,6 @@ class _regVisitorState extends State<regVisitor> {
 
   final TextEditingController _genderTextEditingController =
       TextEditingController();
-      
 
   @override
   void dispose() {
@@ -82,6 +81,16 @@ class _regVisitorState extends State<regVisitor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+          title: "Registor Visitor",
+          onClickedHome: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: ((context) => Dashboard())));
+          },
+          onClickedBack: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: ((context) => DataSheet())));
+          }),
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: _mainBody(),
@@ -161,7 +170,6 @@ class _TextDropDownState extends State<TextDropDown> {
   /// This is on text changed method which will display on city text field on changed.
   void onTextFieldTap() {
     DropDownState(
-      
       DropDown(
         submitButtonText: kDone,
         submitButtonColor: AppColor.greenHK,
@@ -170,7 +178,7 @@ class _TextDropDownState extends State<TextDropDown> {
         searchBackgroundColor: Colors.black12,
         dataList: widget.gender ?? [],
         selectedItems: (List<dynamic> selectedList) {
-          showSnackBar(selectedList.  toString());
+          showSnackBar(selectedList.toString());
         },
         selectedItem: (String selected) {
           showSnackBar(selected);
@@ -216,7 +224,6 @@ class _TextDropDownState extends State<TextDropDown> {
             labelText: 'Gender',
             hintText: 'Enter Gender',
             isDense: true,
-            
             contentPadding: EdgeInsets.fromLTRB(12.0, 8.0, 28.0, 8.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(2),
