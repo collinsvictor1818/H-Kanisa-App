@@ -44,7 +44,6 @@ class StartState extends State<Common_Items> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: ((context) => IconMenu())));
             }),
-        backgroundColor: AppColor.whiteHK,
         body: ListView(children: <Widget>[
           Padding(padding: EdgeInsets.symmetric(vertical: 5)),
           BuildList(

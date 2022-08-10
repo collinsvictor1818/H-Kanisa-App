@@ -1,94 +1,49 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_dashboard/dashboard.dart';
-import 'package:responsive_dashboard/main.dart';
-import 'package:responsive_dashboard/page/Common_Items/DataSheet_master.dart';
-import 'package:responsive_dashboard/pallete.dart';
+import 'package:responsive_dashboard/component/FormText.dart';
+import 'package:responsive_dashboard/component/TitleAppBar.dart';
+import 'package:responsive_dashboard/page/Common_Items/DataSheet%20Master/Drop%20Child.dart';
 
-Widget build(BuildContext context) => MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Common_Items',
-      color: AppColor.whiteHK,
-      theme: ThemeData(
-          primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
-      home: DataSheet(),
-    );
+//import '../pallete.dart';
 
-class DataSheet extends StatelessWidget {
+class PickChild extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: AppColor.whiteHK),
-          foregroundColor: AppColor.whiteHK,
-          title: Text('Data Sheet Master'),
-          //centerTitle: true,
-          backgroundColor: AppColor.BACK_GROUND_COLOR,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
-              }),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          child: Column(
+            children: [
+              Container(
+                  alignment: Alignment.bottomLeft,
+                  child: FormTitle(
+                    title: "Pick Child",
+                  )),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    FormText(
+                      text: "First Name",
+                    ),
+                    FormText(text: "Second Name"),
+                    FormText(text: "Last Name"),
+                    FormText(text: "Phone Number"),
+                    FormText(text: "Birthday"),
+                    FormText(
+                        text: "Cell", suffix: Icons.arrow_drop_down_rounded),
+                    FormText(
+                        text: "Zone", suffix: Icons.arrow_drop_down_rounded),
+                    FormText(
+                        text: "Church", suffix: Icons.arrow_drop_down_rounded),
+                    FormText(
+                        text: "Branch", suffix: Icons.arrow_drop_down_rounded),
+                    FormText(text: "Location"),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-        body: ListView(children: <Widget>[
-          ListTile(
-            leading: Icon(Icons.dashboard_customize_rounded),
-            title: Text('Register Visitor'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.photo_album),
-            title: Text('Record Temperature'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.phone),
-            title: Text('Register Member'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.contacts),
-            title: Text('View Members'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.contacts),
-            title: Text('Register Child'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.contacts),
-            title: Text('Drop Child'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.contacts),
-            title: Text('Pick Child'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-          ListTile(
-            leading: Icon(Icons.add_box_outlined),
-            title: Text('Visitation'),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => DataSheet(),
-            )),
-          ),
-        ]),
       ),
     );
   }

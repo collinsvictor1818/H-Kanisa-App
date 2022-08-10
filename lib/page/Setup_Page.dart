@@ -33,6 +33,7 @@ class Setup extends StatefulWidget {
 class _SetupState extends State<Setup> {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.scaffoldColor,
       appBar: CustomAppBar(
           title: "Setup",
           onClickedHome: () {

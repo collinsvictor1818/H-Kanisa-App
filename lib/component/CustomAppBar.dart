@@ -32,7 +32,7 @@ Widget CustomAppBar({
             onPressed: onClickedBack),
         Padding(padding: EdgeInsets.all(3)),
       ],
-      elevation: 10.0,
+      elevation: 0.0,
       toolbarHeight: 72,
       title: Text(title,
           style: TextStyle(
@@ -47,6 +47,7 @@ Widget CustomAppBar({
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
             ),
+            /*
             boxShadow: [
               BoxShadow(
                 offset: Offset(10, 0),
@@ -54,6 +55,7 @@ Widget CustomAppBar({
                 color: AppColor.offWhiteHK,
               )
             ],
+            */
             gradient: LinearGradient(
                 colors: [AppColor.whiteHK, AppColor.whiteHK],
                 begin: Alignment.bottomCenter,

@@ -25,6 +25,7 @@ class Admin extends StatefulWidget {
 class _AdminState extends State<Admin> {
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.scaffoldColor,
       appBar: CustomAppBar(
           title: "Admin",
           onClickedHome: () {

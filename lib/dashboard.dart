@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_dashboard/pallete.dart';
 import 'package:responsive_dashboard/component/BottomNavigationBar.dart';
 import 'package:responsive_dashboard/component/NavBar.dart';
 import 'package:responsive_dashboard/component/appBarActionItems.dart';
-import 'package:responsive_dashboard/component/barChart.dart';
+
 import 'package:responsive_dashboard/component/header.dart';
 import 'package:responsive_dashboard/component/historyTable.dart';
 import 'package:responsive_dashboard/component/infoCard.dart';
@@ -27,8 +28,8 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-    
       key: _drawerKey,
+      backgroundColor: AppColor.scaffoldColor,
       drawer: SizedBox(width: 210, child: IconMenu()),
       appBar: !Responsive.isDesktop(context)
           ? AppBar(
@@ -143,10 +144,6 @@ class Dashboard extends StatelessWidget {
                         ),
                         SizedBox(
                           height: SizeConfig.blockSizeVertical * 3,
-                        ),
-                        Container(
-                          height: 180,
-                          child: BarChartCopmponent(),
                         ),
                         SizedBox(
                           height: SizeConfig.blockSizeVertical * 5,

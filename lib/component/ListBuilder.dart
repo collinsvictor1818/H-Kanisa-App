@@ -26,12 +26,10 @@ Widget BuildList({
     // padding: EdgeInsets.symmetric(horizontal: 15),
     child: PhysicalModel(
       color: Colors.white,
-      elevation: 10,
-      shadowColor: AppColor.offWhiteHK,
       borderRadius: BorderRadius.circular(15),
       child: Center(
         child: Container(
-          height: 80,
+          height: 60,
           child: ListTile(
               dense: true,
               leading: Icon(icon, color: AppColor.midGreyHk),
@@ -43,7 +41,7 @@ Widget BuildList({
                         color: AppColor.midGreyHk,
                         fontFamily: 'Poppins',
                         fontSize: 15,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w400),
                   )),
               subtitle: Text(
                 desc ?? "",
@@ -60,7 +58,7 @@ Widget BuildList({
         ),
       ),
     ),
-    padding: EdgeInsets.symmetric(vertical: 5)
+    padding: EdgeInsets.symmetric(vertical: 10)
         .add(EdgeInsets.symmetric(horizontal: 18)),
   );
 }

@@ -46,7 +46,11 @@ class Header extends StatelessWidget {
               ),
               prefixIcon: Icon(Icons.search, color: AppColors.redHK),
               hintText: 'Search',
-              hintStyle: TextStyle(color: AppColors.redHK, fontSize: 14)),
+              hintStyle: TextStyle(
+                  color: AppColors.redHK,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w300,
+                  fontSize: 14)),
         ),
       ),
     ]);

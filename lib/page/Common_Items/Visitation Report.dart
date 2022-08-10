@@ -18,6 +18,7 @@ class visitationReport extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: AppColor.scaffoldColor,
         appBar: AppBar(
           iconTheme: IconThemeData(color: AppColor.whiteHK),
           foregroundColor: AppColor.whiteHK,
