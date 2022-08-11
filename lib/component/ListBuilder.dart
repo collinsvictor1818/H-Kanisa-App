@@ -25,6 +25,7 @@ Widget BuildList({
   return Container(
     // padding: EdgeInsets.symmetric(horizontal: 15),
     child: PhysicalModel(
+      clipBehavior: Clip.none,
       color: Colors.white,
       borderRadius: BorderRadius.circular(15),
       child: Center(
@@ -32,6 +33,7 @@ Widget BuildList({
           height: 60,
           child: ListTile(
               dense: true,
+
               leading: Icon(icon, color: AppColor.midGreyHk),
               title: Transform.translate(
                   offset: Offset(-20, 0),

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_dashboard/component/CustomButton.dart';
+import 'package:responsive_dashboard/component/FormBirthday.dart';
 import 'package:responsive_dashboard/component/FormText.dart';
-import 'package:responsive_dashboard/component/TitleAppBar.dart';
-import 'package:responsive_dashboard/page/Common_Items/DataSheet%20Master/Drop%20Child.dart';
+import 'package:responsive_dashboard/component/List.dart';
 
+import '../../../component/FormOptions.dart';
+import '../../../component/TitleAppBar.dart';
+import '../DataSheet_master.dart';
 //import '../pallete.dart';
 
 class PickChild extends StatelessWidget {
@@ -17,8 +21,12 @@ class PickChild extends StatelessWidget {
               Container(
                   alignment: Alignment.bottomLeft,
                   child: FormTitle(
-                    title: "Pick Child",
-                  )),
+                      title: "Pick Child",
+                      onClicked: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => DataSheet(),
+                        ));
+                      })),
               SingleChildScrollView(
                 child: Column(
                   children: [
@@ -26,17 +34,14 @@ class PickChild extends StatelessWidget {
                       text: "First Name",
                     ),
                     FormText(text: "Second Name"),
+                    FormText(text: "Middle Name"),
                     FormText(text: "Last Name"),
                     FormText(text: "Phone Number"),
-                    FormText(text: "Birthday"),
-                    FormText(
-                        text: "Cell", suffix: Icons.arrow_drop_down_rounded),
-                    FormText(
-                        text: "Zone", suffix: Icons.arrow_drop_down_rounded),
-                    FormText(
-                        text: "Church", suffix: Icons.arrow_drop_down_rounded),
-                    FormText(
-                        text: "Branch", suffix: Icons.arrow_drop_down_rounded),
+                    FormBirthday(text: "Birthday"),
+                    FormDropDown(text: "Cell",list: cell),
+                    FormDropDown(text: "Zone", list: zone),
+                    FormDropDown(text: "Church", list: church),
+                    FormDropDown(text: "Branch", list: branch),
                     FormText(text: "Location"),
                   ],
                 ),

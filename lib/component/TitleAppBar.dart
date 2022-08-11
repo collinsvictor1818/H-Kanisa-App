@@ -19,20 +19,24 @@ Widget FormTitle({
   VoidCallback onClicked,
 }) {
   return Padding(
-    padding: const EdgeInsets.only(top: 80),
-    child: Row(
+    padding: const EdgeInsets.only(top: 20),
+    child: Column(
       verticalDirection: VerticalDirection.down,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /*
-        IconButton(
-            alignment: Alignment.center,
-            visualDensity: Vi\\,
-            icon: Icon(Icons.arrow_back, color: AppColor.greyHK, size: 40),
-            onPressed: onClicked),
-        */
+
+        Transform.scale(
+          scale: 1.0,
+          child: IconButton(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.zero,
+              constraints: BoxConstraints(),
+              icon: Icon(Icons.arrow_back, color: AppColor.greyHK, size: 32),
+              onPressed: onClicked),
+        ),
+        
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15).add(EdgeInsets.only(top: 20)),
           child: Text(
             title,
             textAlign: TextAlign.center,

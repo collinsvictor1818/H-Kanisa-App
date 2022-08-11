@@ -58,7 +58,7 @@ Widget FormText({
           isDense: true,
           ////
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(0),
+              borderRadius: BorderRadius.circular(5),
               borderSide: BorderSide.none),
           fillColor: Color.fromARGB(64, 236, 236, 236),
           filled: true,
