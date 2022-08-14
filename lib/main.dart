@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Color.fromARGB(255, 245, 245, 248)),
-      home: Dashboard(),
+      home: ManageUser(),
     );
   }
 }

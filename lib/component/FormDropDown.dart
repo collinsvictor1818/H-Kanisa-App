@@ -11,15 +11,15 @@ abstract class formText extends StatelessWidget {
   }
 }
 
-Widget FormText({
   String text,
+Widget FormText({
   String hint,
   IconData prefix,
   IconData suffix,
   VoidCallback onClicked,
 }) {
-  final hoverColor = Colors.red;
-  final space = EdgeInsets.symmetric(horizontal: 12);
+   hoverColor = Colors.red;
+  space = EdgeInsets.symmetric(horizontal: 12);
   return Column(
     children: [
       Align(

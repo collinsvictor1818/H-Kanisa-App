@@ -23,7 +23,7 @@ Widget build(BuildContext context) => MaterialApp(
       color: AppColor.whiteHK,
       theme: ThemeData(
           primarySwatch: AppColor.colorHK,
-          scaffoldBackgroundColor: Colors.white),
+         ),
       home: manageUsers(),
     );
 
