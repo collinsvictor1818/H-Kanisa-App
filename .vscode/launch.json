@@ -5,24 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "H-Kanisa App",
-            "cwd": "H-Kanisa App",
+            "name": "Dart & Flutter",
+            "program": "C:/Users/colli/OneDrive/Documents/GitHub/H-Kanisa-App/lib/main.dart",
             "request": "launch",
             "type": "dart"
-        },
-        {
-            "name": "H-Kanisa App (profile mode)",
-            "cwd": "H-Kanisa App",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "H-Kanisa App (release mode)",
-            "cwd": "H-Kanisa App",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
         }
     ]
 }
