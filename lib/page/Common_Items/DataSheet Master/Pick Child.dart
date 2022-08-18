@@ -43,6 +43,11 @@ class PickChild extends StatelessWidget {
                     FormDropDown(text: "Church", list: church),
                     FormDropDown(text: "Branch", list: branch),
                     FormText(text: "Location"),
+                    FormButton(text:"Submit",action: (){
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DataSheet(),
+                      ));
+                    } )
                   ],
                 ),
               )
