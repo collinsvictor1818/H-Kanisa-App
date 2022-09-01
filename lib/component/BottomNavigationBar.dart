@@ -1,143 +1,84 @@
-
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:responsive_dashboard/ManageUser.dart';
+import 'package:responsive_dashboard/dashboard.dart';
+import 'package:responsive_dashboard/page/People.dart';
 
+import '../pallete.dart';
 
-
-class BottomNav extends StatefulWidget {
+class bottomNav extends StatefulWidget {
   @override
-  BottomNavState createState() => BottomNavState();
+  State<StatefulWidget> createState() => bottomNavState();
 }
 
-class BottomNavState extends State<BottomNav> {
-  var currentIndex = 0;
+class bottomNavState extends State<bottomNav> {
+  List<Widget> _widgetOptions = <Widget>[Dashboard(), People(), manageUsers()];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    double displayWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      bottomNavigationBar: Container(
-        margin: EdgeInsets.all(displayWidth * .05),
-        height: displayWidth * .155,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(.1),
-              blurRadius: 30,
-              offset: Offset(0, 10),
-            ),
-          ],
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: ListView.builder(
-          itemCount: 4,
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.symmetric(horizontal: displayWidth * .02),
-          itemBuilder: (context, index) => InkWell(
-            onTap: () {
-              setState(() {
-                currentIndex = index;
-                HapticFeedback.lightImpact();
-              });
-            },
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            child: Stack(
-              children: [
-                AnimatedContainer(
-                  duration: Duration(seconds: 1),
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  width: index == currentIndex
-                      ? displayWidth * .32
-                      : displayWidth * .18,
-                  alignment: Alignment.center,
-                  child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    height: index == currentIndex ? displayWidth * .12 : 0,
-                    width: index == currentIndex ? displayWidth * .32 : 0,
-                    decoration: BoxDecoration(
-                      color: index == currentIndex
-                          ? Colors.blueAccent.withOpacity(.2)
-                          : Colors.transparent,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
-                ),
-                AnimatedContainer(
-                  duration: Duration(seconds: 1),
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  width: index == currentIndex
-                      ? displayWidth * .31
-                      : displayWidth * .18,
-                  alignment: Alignment.center,
-                  child: Stack(
-                    children: [
-                      Row(
-                        children: [
-                          AnimatedContainer(
-                            duration: Duration(seconds: 1),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                            width:
-                                index == currentIndex ? displayWidth * .13 : 0,
-                          ),
-                          AnimatedOpacity(
-                            opacity: index == currentIndex ? 1 : 0,
-                            duration: Duration(seconds: 1),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                            child: Text(
-                              index == currentIndex
-                                  ? '${listOfStrings[index]}'
-                                  : '',
-                              style: TextStyle(
-                                color: Colors.blueAccent,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          AnimatedContainer(
-                            duration: Duration(seconds: 1),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                            width:
-                                index == currentIndex ? displayWidth * .03 : 20,
-                          ),
-                          Icon(
-                            listOfIcons[index],
-                            size: displayWidth * .076,
-                            color: index == currentIndex
-                                ? Colors.blueAccent
-                                : Colors.black26,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return new Scaffold(body: Center(child: _widgetOptions[_selectedIndex]));
   }
+}
 
-  List<IconData> listOfIcons = [
-    Icons.home_rounded,
-    Icons.favorite_rounded,
-    Icons.settings_rounded,
-    Icons.person_rounded,
-  ];
+int _selectedIndex = 1;
 
-  List<String> listOfStrings = [
-    'Home',
-    'Favorite',
-    'Settings',
-    'Account',
-  ];
+void selectedItem(BuildContext context, int index) {
+  switch (index) {
+    case 0:
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => People(),
+      ));
+
+      break;
+    case 1:
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => Dashboard(),
+      ));
+
+      break;
+    case 2:
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => manageUsers(),
+      ));
+
+      break;
+  }
+}
+
+Widget BottomNav({
+  String title,
+  VoidCallback onClicked,
+}) {
+  return BottomNavigationBar(
+    currentIndex: _selectedIndex,
+    elevation: 10,
+    showSelectedLabels: false,
+    type: BottomNavigationBarType.shifting,
+    showUnselectedLabels: false,
+    selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+    selectedItemColor: AppColor.greenHK,
+    unselectedItemColor: AppColor.midGreyHk,
+    items: const [
+      //People Navigation
+      BottomNavigationBarItem(
+          icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
+          activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+          label: "People"),
+      //Home Navigation
+      BottomNavigationBarItem(
+          icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+          activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+          label: "Home"),
+      //More
+      BottomNavigationBarItem(
+          icon: Icon(FluentSystemIcons.ic_fluent_apps_list_regular),
+          activeIcon: Icon(FluentSystemIcons.ic_fluent_apps_list_filled),
+          label: "People"),
+    ],
+  );
 }
